@@ -790,10 +790,10 @@ var summerHtmlImageMapCreator = (function() {
     };
     Area.REGEXP = {
         AREA : /<area(?=.*? shape="(rect|circle|poly)")(?=.*? coords="([\d ,]+?)")[\s\S]*?>/gmi,
-        HREF : / href="([\S\s]*?)"/,
-        ALT : / alt="([\S\s]*?)"/,
-		ID : / id="([\S\s]*?)"/,
-        TITLE : / title="([\S\s]*?)"/,
+        href : / href="([\S\s]*?)"/,
+        alt : / alt="([\S\s]*?)"/,
+		id : / id="([\S\s]*?)"/,
+        title : / title="([\S\s]*?)"/,
         DELIMETER : / ?, ?/
     };
     Area.HTML_NAMES_TO_AREA_NAMES = {
@@ -801,7 +801,7 @@ var summerHtmlImageMapCreator = (function() {
         circle : 'circle',
         poly : 'polygon'
     };
-    Area.ATTRIBUTES_NAMES = ['HREF', 'ALT', 'ID', 'TITLE'];
+    Area.ATTRIBUTES_NAMES = ['href', 'alt', 'id', 'title'];
     
     /**
      * This method should be implemented for child-classes 
@@ -911,10 +911,10 @@ var summerHtmlImageMapCreator = (function() {
      * @param attributes {Object} - Object with attributes for area
      */
     Area.prototype.setInfoAttributes = function(attributes) {
-        this._attributes.href = attributes.HREF;
-        this._attributes.alt = attributes.ALT;
-        this._attributes.title = attributes.TITLE;
-		this._attributes.id = attributes.ID;
+        this._attributes.href = attributes.href;
+        this._attributes.alt = attributes.alt;
+        this._attributes.title = attributes.title;
+		this._attributes.id = attributes.id;
     };
     
     /**
@@ -2387,10 +2387,10 @@ var summerHtmlImageMapCreator = (function() {
         return {
             load : function(object, new_x, new_y) {
                 obj = object;
-                href_attr.value = object.href ? object.href : '';
-                alt_attr.value = object.alt ? object.alt : '';
-                title_attr.value = object.title ? object.title : '';
-				id_attr.value = object.id ? object.id : '';
+                href_attr.value = object._attributes.href ? object._attributes.href : '';
+                alt_attr.value = object._attributes.alt ? object._attributes.alt : '';
+                title_attr.value = object._attributes.title ? object._attributes.title : '';
+				id_attr.value = object._attributes.id ? object._attributes.id : '';
                 utils.show(form);
                 if (new_x && new_y) {
                     x = new_x;
